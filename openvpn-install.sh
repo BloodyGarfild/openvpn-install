@@ -295,8 +295,9 @@ LimitNPROC=infinity" > /etc/systemd/system/openvpn-server@server.service.d/disab
 		yum install openvpn iptables openssl ca-certificates -y
 	fi
 	# Get easy-rsa
-	easy_rsa_url='https://dtransfer.net/f/c9ebfb42345806ace52303ace2307e29'
-	wget -O ~/easyrsa.tgz "$easy_rsa_url" 2>/dev/null || curl -Lo ~/easyrsa.tgz "$easy_rsa_url"
+	easy_rsa_url='https://github.com/OpenVPN/easy-rsa/releases/download/v3.0.6/EasyRSA-unix-v3.0.6.tgz'
+	mv /tmp/EasyRSA-unix-v3.0.6.tgz ~/easyrsa.tgz
+	#wget -O ~/easyrsa.tgz "$easy_rsa_url" 2>/dev/null || curl -Lo ~/easyrsa.tgz "$easy_rsa_url"
 	tar xzf ~/easyrsa.tgz -C ~/
 	mv ~/EasyRSA-3.0.6/ /etc/openvpn/server/
 	mv /etc/openvpn/server/EasyRSA-3.0.6/ /etc/openvpn/server/easy-rsa/
