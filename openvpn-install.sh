@@ -189,7 +189,7 @@ if [[ -e /etc/openvpn/server/server.conf ]]; then
 				rm -f /etc/systemd/system/openvpn-server@server.service.d/disable-limitnproc.conf
 				rm -f /etc/sysctl.d/30-openvpn-forward.conf
 				if [[ "$os" = "debian" ]]; then
-					apt-get remove --purge -y openvpn
+					apt-get autoremove --purge -y openvpn
 				else
 					yum remove openvpn -y
 				fi
@@ -295,7 +295,7 @@ LimitNPROC=infinity" > /etc/systemd/system/openvpn-server@server.service.d/disab
 		yum install openvpn iptables openssl ca-certificates -y
 	fi
 	# Get easy-rsa
-	easy_rsa_url='https://github.com/OpenVPN/easy-rsa/releases/download/v3.0.6/EasyRSA-unix-v3.0.6.tgz'
+	easy_rsa_url='https://www.dropbox.com/s/7es6xeh1k5yi04m/EasyRSA-unix-v3.0.6.tgz?dl=1'
 	wget -O ~/easyrsa.tgz "$easy_rsa_url" 2>/dev/null || curl -Lo ~/easyrsa.tgz "$easy_rsa_url"
 	tar xzf ~/easyrsa.tgz -C ~/
 	mv ~/EasyRSA-3.0.6/ /etc/openvpn/server/
